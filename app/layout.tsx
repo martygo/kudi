@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import BackToTop from "@/components/back-to-top";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppinsSans = Poppins({
 	subsets: ["latin"],
@@ -14,19 +15,8 @@ const poppinsSans = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: "Perfumaria Tchiwa - você encontra mais que um perfume.",
-	description: "Encontre o perfume ideal para você.",
-	keywords: [
-		"perfumaria",
-		"perfume",
-		"tchiwa",
-		"perfumes baratos",
-		"perfumaria tchiwa",
-		"perfumaria online",
-		"comprar perfume online",
-		"perfume masculino",
-		"perfume feminino",
-	],
+	title: "Kudi - Encontre o local ideal para você",
+	description: "Encontre o local ideal para você.",
 };
 
 export default function RootLayout({
@@ -43,6 +33,7 @@ export default function RootLayout({
 				</main>
 				<BackToTop />
 				<Footer />
+				<Toaster />
 			</body>
 		</html>
 	);
