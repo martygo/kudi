@@ -2,7 +2,6 @@
 
 import { toast } from "sonner";
 
-import { createReason } from "./actions";
 import SubmitButton from "./_components/submit.button";
 
 export default function DeleteAccount() {
