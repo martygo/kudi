@@ -10,19 +10,29 @@ export default function DeleteAccount() {
 		e.preventDefault();
 
 		const formData = new FormData(e.currentTarget);
-		await createReason({
+		const payload = {
 			email: formData.get("email") as string,
 			reason: formData.get("reason") as string,
-		});
+		};
 
-		toast("Solicitação enviada", {
-			description: "Dentro de alguns dias sua conta será excluída.",
-			position: "top-center",
-			action: {
-				label: "Fechar",
-				onClick: () => void 0,
-			},
-		});
+		try {
+			const res = await fetch("/api/reports", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(payload),
+			});
+
+			if (!res.ok) throw new Error("Failed to submit");
+
+			toast("Solicitação enviada", {
+				description: "Dentro de alguns dias sua conta será excluída.",
+				position: "top-center",
+				action: { label: "Fechar", onClick: () => void 0 },
+			});
+		} catch (err) {
+			console.error(err);
+			toast.error?.("Erro ao enviar solicitação");
+		}
 	}
 
 	return (
